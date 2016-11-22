@@ -124,7 +124,7 @@
 
 
         function getLastName(fullName) {
-            return fullName.match(/\w+/g)[1];
+            return fullName.match(/[^\s\d-]+/g)[1]
         }
 
         const getFirstName = (fullName) => {
