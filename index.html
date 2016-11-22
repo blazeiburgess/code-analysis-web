@@ -157,7 +157,7 @@
          */
         function filterByName(searchForName, personList) {
             return personList.filter((person) => {
-                return person.name === searchForName;
+	      return person.name.toLowerCase().indexOf(searchForName.toLowerCase()) >= 0
             });
         }
 
