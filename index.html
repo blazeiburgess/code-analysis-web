@@ -179,16 +179,19 @@
          *
          */
         function sortObjListByProp(prop) {
-            return function(objList) {
+            return function(objList, modifier=undefined) {
                 // Make a copy & don't mutate the passed in list
                 let result = objList.slice(0);
+		if (modifier !== undefined) {
+		  return result.sort((a, b) => modifier(a[prop]) > modifier(b[prop]));
+		}
 		return result.sort((a, b) => a[prop] > b[prop]);
             };
         }
 
         const sortByFirstName = sortObjListByProp('name');
 
-        const sortByLastName = (personList) => sortByFirstName(personList).reverse();
+        const sortByLastName = (personList) => sortByFirstName(personList, getLastName)
 
 
         /*==================================================
