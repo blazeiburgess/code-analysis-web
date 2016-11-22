@@ -181,21 +181,8 @@
         function sortObjListByProp(prop) {
             return function(objList) {
                 // Make a copy & don't mutate the passed in list
-                let result = objList.slice(1);
-
-                result.sort((a, b) => {
-                    if (a[prop] < b[prop]) {
-                        return -1;
-                    }
-
-                    if (a[prop] > b[prop]) {
-                        return 1;
-                    }
-
-                    return 1;
-                });
-
-                return result;
+                let result = objList.slice(0);
+		return result.sort((a, b) => a[prop] > b[prop]);
             };
         }
 
